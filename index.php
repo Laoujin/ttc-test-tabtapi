@@ -159,7 +159,7 @@ function DisplayPost($index)
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="form-group">
-									<label for="Season">Season:</label> <small>(Get the id with GetSeasons)</small>
+									<label for="Season">Season:</label> <small>(Get the id with GetSeasons. 2015-2016 = 16)</small>
 									<input type="text" class="form-control" name='Season' value="<?=DisplayPost("Season")?>">
 								</div>
 
@@ -173,7 +173,7 @@ function DisplayPost($index)
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="form-group">
-									<label for="Club">Club:</label> <small>(ex: 'OVL001' for Gent)</small>
+									<label for="Club">Club:</label> <small>(Erembodegem: VTTL: 'OVL134'. Sporta: '4055')</small>
 									<input type="text" class="form-control" name='Club' value="<?=$Club?>">
 								</div>
 
