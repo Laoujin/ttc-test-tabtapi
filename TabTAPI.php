@@ -112,7 +112,7 @@ class TabTAPI
 		return $this->soapCall("GetMembers");
 	}
 
-	function GetMatches($divisionId, $club, $team, $divisionCategory, $season, $weekName, $level, $showDivisionName)
+	function GetMatches($divisionId, $club, $team, $divisionCategory, $season, $weekName, $level, $showDivisionName, $withDetails, $matchId)
 	{
 		$this->_lastParams = array(
 		  "Credentials" => $this->_credentials,
@@ -123,7 +123,9 @@ class TabTAPI
 		  "Season" => $season ? $season : null,
 		  "WeekName" => $weekName,
 		  "Level" => $level ? $level : null,
-		  "ShowDivisionName" => $showDivisionName /* no, yes, short */
+		  "ShowDivisionName" => $showDivisionName, /* no, yes, short */
+		  "WithDetails" => $withDetails,
+		  "MatchId" => $matchId
 		);
 		return $this->soapCall("GetMatches");
 	}

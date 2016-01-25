@@ -47,7 +47,9 @@ if (isset($_POST["submit"])) {
 			$_POST["Season"],
 			$_POST["WeekName"],
 			$_POST["Level"],
-			$_POST["ShowDivisionName"]);
+			$_POST["ShowDivisionName"],
+			isset($_POST["GetMatchDetails"]),
+			$_POST["MatchId"]);
 	}
 }
 
@@ -69,6 +71,18 @@ function DisplayPost($index)
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
+<script>
+	$(function() {
+		function setClub(competition, clubId, e) {
+			$('#Competition').val(competition);
+			$('#Club').val(clubId);
+			e.preventDefault();
+		}
+
+		$('#VttlClub').click(e => setClub('VTTL', 'OVL134', e));
+		$('#SportaClub').click(e => setClub('Sporta', '4055', e));
+	});
+</script>
 <body>
 
 <div class="container">
@@ -131,7 +145,7 @@ function DisplayPost($index)
 				<div class="panel-body">
 					<div class="form-group">
 						<label for="wsdlUrl">Competition:</label>
-						<select class="form-control" name='wsdlUrl'>
+						<select class="form-control" name='wsdlUrl' id="Competition">
 							<option value="VTTL" <?=(isset($_POST["wsdlUrl"]) && $_POST["wsdlUrl"] == "VTTL" ? "selected" : "")?>>VTTL</option>
 							<option value="Sporta" <?=(isset($_POST["wsdlUrl"]) && $_POST["wsdlUrl"] == "Sporta" ? "selected" : "")?>>Sporta</option>
 							<option value="KAVVV" <?=(isset($_POST["wsdlUrl"]) && $_POST["wsdlUrl"] == "KAVVV" ? "selected" : "")?>>KAVVV</option>
@@ -173,8 +187,8 @@ function DisplayPost($index)
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="form-group">
-									<label for="Club">Club:</label> <small>(Erembodegem: VTTL: 'OVL134'. Sporta: '4055')</small>
-									<input type="text" class="form-control" name='Club' value="<?=$Club?>">
+									<label for="Club">Club:</label> <small>(Erembodegem: VTTL: '<a href='#' id="VttlClub">OVL134</a>'. Sporta: '<a href='#' id="SportaClub">4055</a>')</small>
+									<input type="text" class="form-control" name='Club' id='Club' value="<?=$Club?>">
 								</div>
 
 								<div class="form-group">
@@ -299,7 +313,7 @@ function DisplayPost($index)
 							</div>
 
 							<div class="form-group">
-								<label for="Team">Team:</label>
+								<label for="Team">Team (A, B, ...):</label>
 								<input type="text" class="form-control" name='Team' value="<?=DisplayPost("Team")?>">
 							</div>
 							<div class="form-group">
@@ -316,10 +330,21 @@ function DisplayPost($index)
 							<div class="form-group">
 								<label for="ShowDivisionName">ShowDivisionName:</label>
 								<select class="form-control" name='ShowDivisionName'>
-										<option value="no" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "no" ? "selected" : "")?>>The division name is not given </option>
-										<option value="yes" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "yes" ? "selected" : "")?>>The full division is given</option>
-										<option value="short" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "short" ? "selected" : "")?>>A short name of the division is given</option>
-									</select>
+									<option value="no" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "no" ? "selected" : "")?>>The division name is not given </option>
+									<option value="yes" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "yes" ? "selected" : "")?>>The full division is given</option>
+									<option value="short" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "short" ? "selected" : "")?>>A short name of the division is given</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="GetMatchDetails">Get match details:</label>
+								<input type="checkbox" class="form-control" name='GetMatchDetails' value="1" <?=(isset($_POST["GetMatchDetails"]) ? 'checked="checked"' : '')?>>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="MatchId">MatchId:</label>
+								<input type="text" class="form-control" name='MatchId' checked="<?=DisplayPost("MatchId")?>">
 							</div>
 						</div>
 					</div>
