@@ -36,7 +36,8 @@ if (isset($_POST["submit"])) {
 			$_POST["PlayerCategory"],
 			$_POST["UniqueIndex"],
 			$_POST["NameSearch"],
-			isset($_POST["ExtendedInformation"]) ? $_POST["ExtendedInformation"] : 0);
+			isset($_POST["ExtendedInformation"]) ? $_POST["ExtendedInformation"] : 0,
+			isset($_POST["RankingPointsInformation"]));
 
 	} else if (isset($_POST['GetMatches'])) {
 		$response = $api->GetMatches(
@@ -288,7 +289,10 @@ function DisplayPost($index)
 						<input type="text" class="form-control" name='NameSearch' value="<?=DisplayPost("NameSearch")?>">
 					</div>
 					<div class="checkbox">
-					  <label><input type="checkbox" value="1" name="ExtendedInformation">ExtendedInformation</label>
+						<label><input type="checkbox" value="1" name="ExtendedInformation" <?=(isset($_POST["ExtendedInformation"]) ? 'checked="checked"' : '')?>>ExtendedInformation</label>
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox" value="1" name="RankingPointsInformation" <?=(isset($_POST["RankingPointsInformation"]) ? 'checked="checked"' : '')?>>RankingPointsInformation (Login Required)</label>
 					</div>
 
 					<button type="submit" class="btn btn-primary" name="GetMembers">GetMembers</button>

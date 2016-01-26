@@ -98,7 +98,7 @@ class TabTAPI
 		return $clubs;
 	}
 
-	function GetMembers($club, $season, $playerCategory, $uniqueIndex, $nameSearch, $extendedInformation)
+	function GetMembers($club, $season, $playerCategory, $uniqueIndex, $nameSearch, $extendedInformation, $rankingPointsInformation)
 	{
 		$this->_lastParams = array(
 		  "Credentials" => $this->_credentials,
@@ -107,8 +107,10 @@ class TabTAPI
 		  "PlayerCategory" => $playerCategory ? $playerCategory : null,
 		  "UniqueIndex" => $uniqueIndex ? $uniqueIndex : null,
 		  "NameSearch" => $nameSearch,
-		  "ExtendedInformation" => $extendedInformation ? 1 : 0
+		  "ExtendedInformation" => $extendedInformation ? 1 : 0,
+		  "RankingPointsInformation" => $rankingPointsInformation ? true : false
 		);
+		//print_r($this->_lastParams);
 		return $this->soapCall("GetMembers");
 	}
 
