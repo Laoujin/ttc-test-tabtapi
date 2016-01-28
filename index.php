@@ -1,6 +1,8 @@
 <?php
 include_once "TabTAPI.php";
 
+define('CURRENT_SEASON', 16);
+
 $params = parse_ini_file("settings.ini.php");
 $Account = $params["Account"];
 $Password = $params["Password"];
@@ -175,7 +177,7 @@ function DisplayPost($index)
 							<div class="form-group">
 								<div class="form-group">
 									<label for="Season">Season:</label> <small>(Get the id with GetSeasons. 2015-2016 = 16)</small>
-									<input type="text" class="form-control" name='Season' value="<?=DisplayPost("Season")?>">
+									<input type="text" class="form-control" name='Season' value="<?=(DisplayPost("Season") ? DisplayPost("Season") : CURRENT_SEASON)?>">
 								</div>
 
 								<div class="form-group">
