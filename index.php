@@ -350,7 +350,7 @@ function DisplayPost($index)
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="MatchId">MatchId:</label>
-								<input type="text" class="form-control" name='MatchId' checked="<?=DisplayPost("MatchId")?>">
+								<input type="text" class="form-control" name='MatchId' value="<?=DisplayPost("MatchId")?>">
 							</div>
 						</div>
 					</div>
