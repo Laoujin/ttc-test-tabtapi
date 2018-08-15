@@ -1,7 +1,19 @@
 <?php
 include_once "TabTAPI.php";
 
-define('CURRENT_SEASON', 16);
+$month = intval(date("n"));
+$year = intval(date("Y"));
+if ($month > 5) {
+	$curSeason = $year - 2000 + 1;
+} else {
+	$curSeason = $year - 2000;
+}
+$curSeasonDesc = ($curSeason + 2000 - 1) . '-' . ($curSeason + 2000) . ' = ' . $curSeason;
+// 2015-2016 = 16
+// 2016-2017 = 17
+// 2018-2019 = 19
+define('CURRENT_SEASON', $curSeason);
+
 
 $params = parse_ini_file("settings.ini.php");
 $Account = $params["Account"];
@@ -176,7 +188,7 @@ function DisplayPost($index)
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="form-group">
-									<label for="Season">Season:</label> <small>(Get the id with GetSeasons. 2015-2016 = 16)</small>
+									<label for="Season">Season:</label> <small>(Get the id with GetSeasons. <?=$curSeasonDesc?>)</small>
 									<input type="text" class="form-control" name='Season' value="<?=(DisplayPost("Season") ? DisplayPost("Season") : CURRENT_SEASON)?>">
 								</div>
 
