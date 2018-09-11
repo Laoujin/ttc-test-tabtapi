@@ -82,7 +82,7 @@ function DisplayPost($index)
 <head>
 <meta charset="UTF-8">
 <title>TabTAPI Test Form</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
@@ -107,8 +107,9 @@ function DisplayPost($index)
 		<div class="panel-heading"><font size="+2">TabTAPI Test Form</font></div>
 		<div class="panel-body">
 			<div class="col-md-6">
-				TabTAPI: <a href="http://api.frenoy.net/tabtapi-doc/index.html">API Documentation</a><br>
-				Source: <a href="https://github.com/Laoujin/ttc-test-tabtapi">GitHub</a><br>
+				<a href="http://tabt.frenoy.net/index.php">TabT-Api Docs</a><br>
+				<a href="https://github.com/gfrenoy/TabT-API">TabT-API Source</a><br>
+				<a href="https://github.com/Laoujin/ttc-test-tabtapi">Source of this</a><br>
 			</div>
 			<div class="col-md-6">
 				<h4>Competition Urls</h4>
