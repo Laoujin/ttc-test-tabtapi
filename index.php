@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
 		$response = $api->GetClubTeams($Club, $_POST["Season"]);
 
 	} else if (isset($_POST["GetDivisionRanking"])) {
-		$response = $api->GetDivisionRanking($_POST["DivisionId"], $_POST["WeekName"]);
+		$response = $api->GetDivisionRanking($_POST["DivisionId"], $_POST["WeekName"], $_POST["RankingSystem"]);
 
 	} else if (isset($_POST["GetClubs"])) {
 		$response = $api->GetClubs($_POST["Season"], $Club, $_POST["ClubCategory"]);
@@ -258,6 +258,11 @@ function DisplayPost($index)
 				<div class="panel-body">
 					Returns ranking of given division for a given week.<br>
 					Requires 'DivisionId' to be filled in! 'WeekName' is optional.<br>
+
+					<div class="form-group">
+						<label for="RankingSystem">RankingSystem:</label>
+						<input type="text" class="form-control" name='RankingSystem' value="<?=DisplayPost("RankingSystem")?>">
+					</div>
 
 					<button type="submit" class="btn btn-primary" name="GetDivisionRanking">GetDivisionRanking</button>
 				</div>

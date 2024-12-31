@@ -72,13 +72,13 @@ class TabTAPI
 		return $this->soapCall("GetClubTeams");
 	}
 
-	function GetDivisionRanking($divisionId, $weekName)
+	function GetDivisionRanking($divisionId, $weekName, $rankingSystem)
 	{
 		$this->_lastParams = array(
 		  "Credentials" => $this->_credentials,
 		  "DivisionId" => $divisionId,
 		  "WeekName" => $weekName,
-		  "RankingSystem" => null
+		  "RankingSystem" => $rankingSystem
 		);
 
 		$result = $this->soapCall("GetDivisionRanking");
