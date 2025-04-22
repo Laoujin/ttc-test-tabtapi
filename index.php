@@ -203,7 +203,7 @@ function DisplayPost($index)
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="form-group">
-									<label for="Club">Club:</label> <small>(Erembodegem: VTTL: '<a href='#' id="VttlClub">OVL134</a>'. Sporta: '<a href='#' id="SportaClub">4055</a>')</small>
+									<label for="Club">Club:</label> <small>(Aalst: VTTL: '<a href='#' id="VttlClub">OVL134</a>'. Sporta: '<a href='#' id="SportaClub">4055</a>')</small>
 									<input type="text" class="form-control" name='Club' id='Club' value="<?=$Club?>">
 								</div>
 
