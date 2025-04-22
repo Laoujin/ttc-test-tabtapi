@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  php-site:
+    build: .
+    ports:
+      - "1709:80"
+    volumes:
+      - .:/var/www/html
+    restart: unless-stopped

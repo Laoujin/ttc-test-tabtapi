@@ -1,6 +1,7 @@
 <?php
 class TabTAPI
 {
+	private $_client;
 	private $_credentials;
 
 	private $_urlVTTL;
@@ -13,7 +14,7 @@ class TabTAPI
 	private $_lastFunctionName;
 	private $_lastError;
 
-	function TabTAPI($account, $password, $urlVTTL, $urlSporta, $urlKAVVV)
+	function __construct($account, $password, $urlVTTL, $urlSporta, $urlKAVVV)
 	{
 		$this->_credentials = new Credentials($account, $password);
 
@@ -173,10 +174,13 @@ class TabTAPI
 
 class Credentials
 {
-    function Credentials($account, $password)
-    {
-        $this->Account = $account;
-        $this->Password = $password;
-    }
+	public $Account;
+	public $Password;
+
+	function __construct($account, $password)
+	{
+		$this->Account = $account;
+		$this->Password = $password;
+	}
 }
 ?>

@@ -17,12 +17,29 @@ VTTL: https://api.vttl.be/?wsdl
 Sporta: https://ttonline.sporta.be/api/?wsdl  
 KAVVV: https://tafeltennis.kavvv.be/api/?wsdl  
 
-Dev
----
+
+
+Docker
+------
+
+Adjust `settings.ini.php` if you want to provide
+a default club or login credentials.
+
+
+```sh
+docker-compose up -d
+```
+
+Surf to [http://localhost:1709](http://localhost:1709)
+
+
+
+Local Install
+-------------
 
 ### Install
 
-Uncomment in `php.ini`  
+Install PHP and uncomment in `php.ini`  
 (Open `phpinfo.php` if unsure about ini location)  
 
 ```ini
