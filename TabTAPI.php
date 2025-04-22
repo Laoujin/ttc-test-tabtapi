@@ -28,7 +28,7 @@ class TabTAPI
 	function Test()
 	{
 		$this->_lastParams = array(
-		  "Credentials" => $this->_credentials
+			"Credentials" => $this->_credentials
 		);
 		return $this->soapCall("Test");
 	}
@@ -57,7 +57,7 @@ class TabTAPI
 	function GetSeasons()
 	{
 		$this->_lastParams = array(
-		  "Credentials" => $this->_credentials
+			"Credentials" => $this->_credentials
 		);
 		return $this->soapCall("GetSeasons");
 	}
@@ -65,9 +65,9 @@ class TabTAPI
 	function GetClubTeams($club, $season)
 	{
 		$this->_lastParams = array(
-		  "Credentials" => $this->_credentials,
-		  "Club" => $club,
-		  "Season" => $season
+			"Credentials" => $this->_credentials,
+			"Club" => $club,
+			"Season" => $season
 		);
 		return $this->soapCall("GetClubTeams");
 	}
@@ -75,10 +75,10 @@ class TabTAPI
 	function GetDivisionRanking($divisionId, $weekName, $rankingSystem)
 	{
 		$this->_lastParams = array(
-		  "Credentials" => $this->_credentials,
-		  "DivisionId" => $divisionId,
-		  "WeekName" => $weekName,
-		  "RankingSystem" => $rankingSystem
+			"Credentials" => $this->_credentials,
+			"DivisionId" => $divisionId,
+			"WeekName" => $weekName,
+			"RankingSystem" => $rankingSystem
 		);
 
 		$result = $this->soapCall("GetDivisionRanking");
@@ -88,10 +88,10 @@ class TabTAPI
 	function GetClubs($season, $club, $clubCategory)
 	{
 		$this->_lastParams = array(
-		  "Credentials" => $this->_credentials,
-		  "Season" => $season ? $season : null,
-		  "ClubCategory" => $clubCategory ? $clubCategory : null,
-		  "Club" => $club
+			"Credentials" => $this->_credentials,
+			"Season" => $season ? $season : null,
+			"ClubCategory" => $clubCategory ? $clubCategory : null,
+			"Club" => $club
 		);
 
 		$clubs = $this->soapCall("GetClubs");
@@ -101,14 +101,14 @@ class TabTAPI
 	function GetMembers($club, $season, $playerCategory, $uniqueIndex, $nameSearch, $extendedInformation, $rankingPointsInformation)
 	{
 		$this->_lastParams = array(
-		  "Credentials" => $this->_credentials,
-		  "Club" => $club ? $club : null,
-		  "Season" => $season ? $season : null,
-		  "PlayerCategory" => $playerCategory ? $playerCategory : null,
-		  "UniqueIndex" => $uniqueIndex ? $uniqueIndex : null,
-		  "NameSearch" => $nameSearch,
-		  "ExtendedInformation" => $extendedInformation ? 1 : 0,
-		  "RankingPointsInformation" => $rankingPointsInformation ? true : false
+			"Credentials" => $this->_credentials,
+			"Club" => $club ? $club : null,
+			"Season" => $season ? $season : null,
+			"PlayerCategory" => $playerCategory ? $playerCategory : null,
+			"UniqueIndex" => $uniqueIndex ? $uniqueIndex : null,
+			"NameSearch" => $nameSearch,
+			"ExtendedInformation" => $extendedInformation ? 1 : 0,
+			"RankingPointsInformation" => $rankingPointsInformation ? true : false
 		);
 		//print_r($this->_lastParams);
 		return $this->soapCall("GetMembers");
@@ -117,17 +117,17 @@ class TabTAPI
 	function GetMatches($divisionId, $club, $team, $divisionCategory, $season, $weekName, $level, $showDivisionName, $withDetails, $matchId)
 	{
 		$this->_lastParams = array(
-		  "Credentials" => $this->_credentials,
-		  "DivisionId" => $divisionId ? $divisionId : null,
-		  "Club" => $club ? $club : null,
-		  "Team" => $team ? $team : null,
-		  "DivisionCategory" => $divisionCategory ? $divisionCategory : null,
-		  "Season" => $season ? $season : null,
-		  "WeekName" => $weekName,
-		  "Level" => $level ? $level : null,
-		  "ShowDivisionName" => $showDivisionName, /* no, yes, short */
-		  "WithDetails" => $withDetails,
-		  "MatchId" => $matchId
+			"Credentials" => $this->_credentials,
+			"DivisionId" => $divisionId ? $divisionId : null,
+			"Club" => $club ? $club : null,
+			"Team" => $team ? $team : null,
+			"DivisionCategory" => $divisionCategory ? $divisionCategory : null,
+			"Season" => $season ? $season : null,
+			"WeekName" => $weekName,
+			"Level" => $level ? $level : null,
+			"ShowDivisionName" => $showDivisionName, /* no, yes, short */
+			"WithDetails" => $withDetails,
+			"MatchId" => $matchId
 		);
 		return $this->soapCall("GetMatches");
 	}
