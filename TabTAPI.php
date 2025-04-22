@@ -133,6 +133,18 @@ class TabTAPI
 		return $this->soapCall("GetMatches");
 	}
 
+	function GetTournaments($season, $tournamentUniqueIndex, $withResults, $withRegistrations)
+	{
+		$this->_lastParams = array(
+			"Credentials" => $this->_credentials,
+			"Season" => $season,
+			"TournamentUniqueIndex" => $tournamentUniqueIndex ? $tournamentUniqueIndex : null,
+			"WithResults" => $withResults,
+			"WithRegistrations" => $withRegistrations
+		);
+		return $this->soapCall("GetTournaments");
+	}
+
 	private function soapCall($functionName)
 	{
 		try {

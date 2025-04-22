@@ -65,6 +65,13 @@ if (isset($_POST["submit"])) {
 			$_POST["ShowDivisionName"],
 			isset($_POST["GetMatchDetails"]),
 			$_POST["MatchId"]);
+
+	} else if (isset($_POST["GetTournaments"])) {
+		$response = $api->GetTournaments(
+			$_POST["Season"],
+			$_POST["TournamentUniqueIndex"],
+			isset($_POST["WithResults"]),
+			isset($_POST["WithRegistrations"]));
 	}
 }
 
@@ -286,6 +293,30 @@ function DisplayPost($index)
 					</div>
 
 					<button type="submit" class="btn btn-primary" name="GetClubs">GetClubs</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4>GetTournaments</h4></div>
+				<div class="panel-body">
+					Requires a UniqueIndex to get results/registrations.<br>
+
+					<div class="form-group">
+						<label for="TournamentUniqueIndex">TournamentUniqueIndex:</label>
+						<input type="text" class="form-control" name='TournamentUniqueIndex' value="<?=DisplayPost("TournamentUniqueIndex")?>">
+					</div>
+					<div class="form-group">
+						<input type="checkbox" name='WithResults' value="1" <?=(isset($_POST["WithResults"]) ? 'checked="checked"' : '')?>>
+						<label for="WithResults">Get with results</label>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" name='WithRegistrations' value="1" <?=(isset($_POST["WithRegistrations"]) ? 'checked="checked"' : '')?>>
+						<label for="WithRegistrations">Get with registrations</label>
+					</div>
+
+					<button type="submit" class="btn btn-primary" name="GetTournaments">GetTournaments</button>
 				</div>
 			</div>
 		</div>
