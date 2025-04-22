@@ -18,7 +18,7 @@ define('CURRENT_SEASON', $curSeason);
 $params = parse_ini_file("settings.ini.php");
 $Account = $params["Account"];
 $Password = $params["Password"];
-$Club = $params["Club"];
+$Club = $params["ClubVTTL"];
 
 if (isset($_POST["submit"])) {
 	$Account = $_POST["Account"];
@@ -203,7 +203,11 @@ function DisplayPost($index)
 						<div class="col-md-6">
 							<div class="form-group">
 								<div class="form-group">
-									<label for="Club">Club:</label> <small>(Aalst: VTTL: '<a href='#' id="VttlClub">OVL134</a>'. Sporta: '<a href='#' id="SportaClub">4055</a>')</small>
+									<label for="Club">Club:</label>
+									<small>
+										(<?=$params["ClubName"]?>: VTTL: '<a href='#' id="VttlClub"><?=$params["ClubVTTL"]?></a>'.
+										Sporta: '<a href='#' id="SportaClub"><?=$params["ClubSporta"]?></a>')
+									</small>
 									<input type="text" class="form-control" name='Club' id='Club' value="<?=$Club?>">
 								</div>
 

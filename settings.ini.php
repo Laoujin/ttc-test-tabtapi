@@ -8,4 +8,6 @@ Sporta = https://ttonline.sporta.be/api/?wsdl
 KAVVV = https://tafeltennis.kavvv.be/api/?wsdl
 
 ; Defaults
-Club =
+ClubName = Aalst
+ClubVTTL = OVL134
+ClubSporta = 4055
