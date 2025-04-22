@@ -4,9 +4,11 @@ ttc-test-tabtapi
 The Frenoy webservices allow you to show table tennis competition results directly on your website. 
 This project is a simple web form where you can enter parameters, call functions and see the results.
 
-More information about the Frenoy webservices can be found at: http://tabt.frenoy.net
+More information about the Frenoy webservices can be found at: [http://tabt.frenoy.net](http://tabt.frenoy.net)
 
 [TabT-API Source](https://github.com/gfrenoy/TabT-API)
+
+
 
 The wsdl endpoints
 ------------------
