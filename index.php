@@ -72,6 +72,19 @@ if (isset($_POST["submit"])) {
 			$_POST["TournamentUniqueIndex"],
 			isset($_POST["WithResults"]),
 			isset($_POST["WithRegistrations"]));
+	} else if (isset($_POST["GetDivisions"])) {
+		$response = $api->GetDivisions(
+			$_POST["Season"],
+			$_POST["Level"],
+			$_POST["ShowDivisionName"]);
+	} else if (isset($_POST["GetMatchSystems"])) {
+		$response = $api->GetMatchSystems($_POST["MatchSystemUniqueIndex"]);
+	} else if (isset($_POST["GetPlayerCategories"])) {
+		$response = $api->GetPlayerCategories(
+			$_POST["Season"],
+			$_POST["PlayerCategoryUniqueIndex"],
+			$_POST["ShortNameSearch"],
+			$_POST["RankingCategory"]);
 	}
 }
 
@@ -414,6 +427,64 @@ function DisplayPost($index)
 		</div>
 	</div>
 
+
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4>GetDivisions</h4></div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="Level">Level:</label>
+						<input type="text" class="form-control" name='Level' value="<?=DisplayPost("Level")?>">
+					</div>
+					<div class="form-group">
+						<label for="ShowDivisionName">Show DivisionName:</label>
+						<select class="form-control" name='ShowDivisionName'>
+							<option value="no" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "no" ? "selected" : "")?>>No</option>
+							<option value="yes" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "yes" ? "selected" : "")?>>Yes</option>
+							<option value="short" <?=(isset($_POST["ShowDivisionName"]) && $_POST["ShowDivisionName"] == "short" ? "selected" : "")?>>Short</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary" name="GetDivisions">GetDivisions</button>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4>GetMatchSystems</h4></div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="MatchSystemUniqueIndex">UniqueIndex:</label>
+						<input type="text" class="form-control" name='MatchSystemUniqueIndex' value="<?=DisplayPost("MatchSystemUniqueIndex")?>">
+					</div>
+					<button type="submit" class="btn btn-primary" name="GetMatchSystems">GetMatchSystems</button>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4>GetPlayerCategories</h4></div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="PlayerCategoryUniqueIndex">UniqueIndex:</label>
+						<input type="text" class="form-control" name='PlayerCategoryUniqueIndex' value="<?=DisplayPost("PlayerCategoryUniqueIndex")?>">
+					</div>
+					<div class="form-group">
+						<label for="ShortNameSearch">ShortNameSearch:</label>
+						<input type="text" class="form-control" name='ShortNameSearch' value="<?=DisplayPost("ShortNameSearch")?>">
+					</div>
+					<div class="form-group">
+						<label for="RankingCategory">RankingCategory <small>(1=Heren, 2=Dames)</small>:</label>
+						<input type="text" class="form-control" name='RankingCategory' value="<?=DisplayPost("RankingCategory")?>">
+					</div>
+					<button type="submit" class="btn btn-primary" name="GetPlayerCategories">GetPlayerCategories</button>
+				</div>
+			</div>
+		</div>
 	</form>
 </div>
 

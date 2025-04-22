@@ -145,6 +145,38 @@ class TabTAPI
 		return $this->soapCall("GetTournaments");
 	}
 
+	function GetDivisions($season, $level, $showDivisionName)
+	{
+		$this->_lastParams = array(
+			"Credentials" => $this->_credentials,
+			"Season" => $season,
+			"Level" => $level ? $level : null,
+			"ShowDivisionName" => $showDivisionName
+		);
+		return $this->soapCall("GetDivisions");
+	}
+
+	function GetMatchSystems($uniqueIndex)
+	{
+		$this->_lastParams = array(
+			"Credentials" => $this->_credentials,
+			"UniqueIndex" => $uniqueIndex ? $uniqueIndex : null
+		);
+		return $this->soapCall("GetMatchSystems");
+	}
+
+	function GetPlayerCategories($season, $uniqueIndex, $shortNameSearch, $rankingCategory)
+	{
+		$this->_lastParams = array(
+			"Credentials" => $this->_credentials,
+			"Season" => $season,
+			"UniqueIndex" => $uniqueIndex ? $uniqueIndex : null,
+			"ShortNameSearch" => $shortNameSearch ? $shortNameSearch : null,
+			"RankingCategory" => $rankingCategory ? $rankingCategory : null
+		);
+		return $this->soapCall("GetPlayerCategories");
+	}
+
 	private function soapCall($functionName)
 	{
 		try {
