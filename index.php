@@ -320,13 +320,11 @@ function DisplayPost($index)
 						<label for="TournamentUniqueIndex">TournamentUniqueIndex:</label>
 						<input type="text" class="form-control" name='TournamentUniqueIndex' value="<?=DisplayPost("TournamentUniqueIndex")?>">
 					</div>
-					<div class="form-group">
-						<input type="checkbox" name='WithResults' value="1" <?=(isset($_POST["WithResults"]) ? 'checked="checked"' : '')?>>
-						<label for="WithResults">Get with results</label>
+					<div class="checkbox">
+						<label><input type="checkbox" value="1" name="WithResults" <?=(isset($_POST["WithResults"]) ? 'checked="checked"' : '')?>>Get with results</label>
 					</div>
-					<div class="form-group">
-						<input type="checkbox" name='WithRegistrations' value="1" <?=(isset($_POST["WithRegistrations"]) ? 'checked="checked"' : '')?>>
-						<label for="WithRegistrations">Get with registrations</label>
+					<div class="checkbox">
+						<label><input type="checkbox" value="1" name="WithRegistrations" <?=(isset($_POST["WithRegistrations"]) ? 'checked="checked"' : '')?>>Get with registrations</label>
 					</div>
 
 					<button type="submit" class="btn btn-primary" name="GetTournaments">GetTournaments</button>
