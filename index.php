@@ -357,10 +357,10 @@ function DisplayPost($index)
 						<input type="text" class="form-control" name='NameSearch' value="<?=DisplayPost("NameSearch")?>">
 					</div>
 					<div class="checkbox">
-						<label><input type="checkbox" value="1" name="ExtendedInformation" <?=(isset($_POST["ExtendedInformation"]) ? 'checked="checked"' : '')?>>ExtendedInformation</label>
+						<label><input type="checkbox" value="1" name="ExtendedInformation" <?=(isset($_POST["ExtendedInformation"]) ? 'checked="checked"' : '')?>>ExtendedInformation (Login Required)</label>
 					</div>
 					<div class="checkbox">
-						<label><input type="checkbox" value="1" name="RankingPointsInformation" <?=(isset($_POST["RankingPointsInformation"]) ? 'checked="checked"' : '')?>>RankingPointsInformation (Login Required)</label>
+						<label><input type="checkbox" value="1" name="RankingPointsInformation" <?=(isset($_POST["RankingPointsInformation"]) ? 'checked="checked"' : '')?>>RankingPointsInformation</label>
 					</div>
 
 					<button type="submit" class="btn btn-primary" name="GetMembers">GetMembers</button>
