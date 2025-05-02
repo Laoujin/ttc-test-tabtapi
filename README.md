@@ -32,7 +32,7 @@ a default club or login credentials.
 docker-compose up -d
 ```
 
-Surf to [http://localhost:1709](http://localhost:1709)
+Surf to [http://localhost:7209](http://localhost:7209)
 
 ### Local Development
 

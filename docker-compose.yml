@@ -4,5 +4,5 @@ services:
   php-site:
     build: .
     ports:
-      - "1709:80"
+      - "7209:80"
     restart: unless-stopped
