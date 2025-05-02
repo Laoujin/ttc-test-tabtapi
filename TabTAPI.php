@@ -1,7 +1,7 @@
 <?php
 class TabTAPI
 {
-	private $_client;
+	public $_client;
 	private $_credentials;
 
 	private $_urlVTTL;
@@ -184,7 +184,11 @@ class TabTAPI
 			$this->_lastError = "";
 			$this->_lastFunctionName = $functionName;
 
-			$this->_client = new SoapClient($this->_wsdlUrl);
+			if ($_POST['OutputType'] === 'XML') {
+				$this->_client = new SoapClient($this->_wsdlUrl, array('trace' => 1));
+			} else {
+				$this->_client = new SoapClient($this->_wsdlUrl);
+			}
 			$result = $this->_client->__soapCall($functionName, array($this->_lastParams));
 			return $result;
 

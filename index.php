@@ -148,7 +148,18 @@ function DisplayPost($index)
 			echo "<h4>Response</h4>";
 			echo '<div class="code-container">';
 			echo "<pre id=\"codeBlock\">";
-			print_r($response);
+			if ($_POST['OutputType'] === 'print_r') {
+				print_r($response);
+			} else if ($_POST['OutputType'] === 'XML') {
+				$xml = $api->_client->__getLastResponse();
+				$dom = new DOMDocument();
+				$dom->preserveWhiteSpace = false;
+				$dom->formatOutput = true;
+				$dom->loadXML($xml);
+				echo htmlspecialchars($dom->saveXML());
+			} else {
+				echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+			}
 			echo "</pre>";
 			echo "<button class=\"copy-button\" onclick=\"copyToClipboard()\">Copy</button>";
 			echo "</div>";
@@ -210,6 +221,15 @@ function DisplayPost($index)
 									<label for="WeekName">WeekName:</label> <small>(ex: 15)</small>
 									<input type="text" class="form-control" name='WeekName' value="<?=DisplayPost("WeekName")?>">
 								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="OutputType">Format Response As:</label>
+								<select class="form-control" name='OutputType' id="OutputType">
+									<option value="print_r" <?=(isset($_POST["OutputType"]) && $_POST["OutputType"] == "print_r" ? "selected" : "")?>>print_r</option>
+									<option value="JSON" <?=(isset($_POST["OutputType"]) && $_POST["OutputType"] == "JSON" ? "selected" : "")?>>JSON</option>
+									<option value="XML" <?=(isset($_POST["OutputType"]) && $_POST["OutputType"] == "XML" ? "selected" : "")?>>XML</option>
+								</select>
 							</div>
 						</div>
 
