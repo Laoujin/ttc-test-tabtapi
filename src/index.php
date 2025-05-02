@@ -157,7 +157,7 @@ function DisplayPost($index)
 			echo "<h4>Response</h4>";
 			echo '<div class="code-container">';
 			if ($_POST['OutputType'] === 'print_r') {
-				echo "<pre id=\"codeBlock\">";
+				echo "<pre id=\"codeBlock\" class='language-php'>";
 				print_r($response);
 			} else if ($_POST['OutputType'] === 'XML') {
 				echo "<pre id=\"codeBlock\" class='language-xml'>";
