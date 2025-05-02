@@ -34,6 +34,19 @@ docker-compose up -d
 
 Surf to [http://localhost:1709](http://localhost:1709)
 
+### Local Development
+
+Does not copy the files into the container
+but serves the files from the local file
+system, for easier development!
+
+```sh
+cd dev
+docker-compose up -d
+```
+
+Surf to [http://localhost:1709](http://localhost:1709)
+
 
 
 Local Install
