@@ -7,6 +7,17 @@ $(function() {
 
   $('#VttlClub').click(e => setClub('VTTL', 'OVL134', e));
   $('#SportaClub').click(e => setClub('Sporta', '4055', e));
+
+
+  // Wrap the code inside the required <code> tag, when needed:
+  jQuery('pre[class*="language-"], pre[class*="lang-"]').each(function() {
+    if (1 !== jQuery(this).children('code').length) {
+      jQuery(this).wrapInner('<code>');
+    }
+  });
+
+  // Highlight code, when the page finished loading (using jQuery here)
+  Prism.highlightAll();
 });
 
 

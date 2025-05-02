@@ -105,6 +105,15 @@ function DisplayPost($index)
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<script>
+  // Enable the "manual" mode to prevent prism from instantly firing.
+  window.Prism = window.Prism || {};
+  window.Prism.manual = true;
+</script>
+<link rel="stylesheet" href="prism.css">
+<script src="prism.js"></script>
+
 <link rel="stylesheet" href="styles.css">
 <script src="scripts.js"></script>
 </head>
@@ -147,10 +156,11 @@ function DisplayPost($index)
 		if ($api->IsSuccess()) {
 			echo "<h4>Response</h4>";
 			echo '<div class="code-container">';
-			echo "<pre id=\"codeBlock\">";
 			if ($_POST['OutputType'] === 'print_r') {
+				echo "<pre id=\"codeBlock\">";
 				print_r($response);
 			} else if ($_POST['OutputType'] === 'XML') {
+				echo "<pre id=\"codeBlock\" class='language-xml'>";
 				$xml = $api->_client->__getLastResponse();
 				$dom = new DOMDocument();
 				$dom->preserveWhiteSpace = false;
@@ -158,6 +168,7 @@ function DisplayPost($index)
 				$dom->loadXML($xml);
 				echo htmlspecialchars($dom->saveXML());
 			} else {
+				echo "<pre id=\"codeBlock\" class='language-json'>";
 				echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 			}
 			echo "</pre>";
