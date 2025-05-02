@@ -6,5 +6,5 @@ services:
     ports:
       - "1709:80"
     volumes:
-      - ../:/var/www/html
+      - ../src:/var/www/html
     restart: unless-stopped

@@ -5,6 +5,6 @@ RUN apt-get update && \
   docker-php-ext-install soap && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY . /var/www/html
+COPY ./src /var/www/html
 
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
