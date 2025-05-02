@@ -105,19 +105,9 @@ function DisplayPost($index)
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles.css">
+<script src="scripts.js"></script>
 </head>
-<script>
-	$(function() {
-		function setClub(competition, clubId, e) {
-			$('#Competition').val(competition);
-			$('#Club').val(clubId);
-			e.preventDefault();
-		}
-
-		$('#VttlClub').click(e => setClub('VTTL', 'OVL134', e));
-		$('#SportaClub').click(e => setClub('Sporta', '4055', e));
-	});
-</script>
 <body>
 
 <div class="container">
@@ -156,9 +146,12 @@ function DisplayPost($index)
 
 		if ($api->IsSuccess()) {
 			echo "<h4>Response</h4>";
-			echo "<pre>";
+			echo '<div class="code-container">';
+			echo "<pre id=\"codeBlock\">";
 			print_r($response);
 			echo "</pre>";
+			echo "<button class=\"copy-button\" onclick=\"copyToClipboard()\">Copy</button>";
+			echo "</div>";
 
 		} else {
 			echo "<h4>Error</h4>";
