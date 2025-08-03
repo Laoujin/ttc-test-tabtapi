@@ -8,13 +8,14 @@ class TabTAPI
 	private $_urlSporta;
 	private $_urlKAVVV;
 	private $_wsdlUrl;
+	private $_urlLoki;
 
 	private $_lastCallSuccess;
 	private $_lastParams;
 	private $_lastFunctionName;
 	private $_lastError;
 
-	function __construct($account, $password, $urlVTTL, $urlSporta, $urlKAVVV)
+	function __construct($account, $password, $urlVTTL, $urlSporta, $urlKAVVV, $urlLoki)
 	{
 		$this->_credentials = new Credentials($account, $password);
 
@@ -22,6 +23,7 @@ class TabTAPI
 		$this->_urlSporta = $urlSporta;
 		$this->_urlSporta = $urlSporta;
 		$this->_urlKAVVV = $urlKAVVV;
+		$this->_urlLoki = $urlLoki;
 
 		$this->SetCompetition("VTTL");
 	}
@@ -179,6 +181,8 @@ class TabTAPI
 
 	private function soapCall($functionName)
 	{
+		$this->log_to_loki($functionName);
+
 		try {
 			$this->_lastCallSuccess = true;
 			$this->_lastError = "";
@@ -217,6 +221,51 @@ class TabTAPI
 	function GetLastError()
 	{
 		return $this->_lastError;
+	}
+
+	function log_to_loki($message) {
+		if (empty($this->_urlLoki)) {
+			return;
+		}
+
+		$labels = [
+			'app' => 'ttc',
+			'level' => 'info',
+			'service_name' => 'ttc-tabt',
+		];
+
+		$sanitizedParams = unserialize(serialize($this->_lastParams));
+		if (isset($sanitizedParams['Credentials']) &&
+			is_object($sanitizedParams['Credentials']) &&
+			property_exists($sanitizedParams['Credentials'], 'Password')
+		) {
+			$sanitizedParams['Credentials']->Password = '***';
+		}
+		$logLine = "Executing endpoint: $message | Params: " . json_encode($sanitizedParams);
+		$stream = [
+			'stream' => $labels,
+			'values' => [
+				[ (string)(int)(microtime(true) * 1e9), $logLine ]
+			]
+		];
+
+		$payload = json_encode(['streams' => [$stream]]);
+
+		try {
+			$ch = curl_init($this->_urlLoki);
+			curl_setopt_array($ch, [
+				CURLOPT_CUSTOMREQUEST => 'POST',
+				CURLOPT_POSTFIELDS => $payload,
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+				CURLOPT_CONNECTTIMEOUT => 1,
+				CURLOPT_TIMEOUT => 2,
+			]);
+			curl_exec($ch);
+			curl_close($ch);
+		} catch (Throwable $e) {
+			// Silently ignore all errors
+		}
 	}
 }
 

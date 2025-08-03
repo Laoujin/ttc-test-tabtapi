@@ -25,7 +25,7 @@ if (isset($_POST["submit"])) {
 	$Password = $_POST["Password"];
 	$Club = $_POST["Club"];
 
-	$api = new TabTAPI($Account, $Password, $params["VTTL"], $params["Sporta"], $params["KAVVV"]);
+	$api = new TabTAPI($Account, $Password, $params["VTTL"], $params["Sporta"], $params["KAVVV"], $params["LokiUrl"]);
 	$api->SetCompetition($_POST["wsdlUrl"]);
 
 	if (isset($_POST["Test"])) {

@@ -6,3 +6,9 @@ services:
     ports:
       - "7209:80"
     restart: unless-stopped
+  networks:
+    - monitoring_monitoring
+
+networks:
+  monitoring_monitoring:
+    external: ${MONITORING:-false}
