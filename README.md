@@ -29,7 +29,7 @@ a default club or login credentials.
 
 
 ```sh
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 Surf to [http://localhost:7209](http://localhost:7209)
