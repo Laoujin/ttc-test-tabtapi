@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   php-site:
+    container_name: ttc-tabt
     build: .
     ports:
       - "7209:80"
@@ -11,4 +12,4 @@ services:
 
 networks:
   monitoring_monitoring:
-    external: ${MONITORING:-false}
+    external: true
