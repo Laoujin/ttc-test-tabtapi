@@ -69,3 +69,13 @@ Start the website:
 ```sh
 php -S localhost:8001
 ```
+
+
+Deploy
+------
+
+```sh
+cd /volume1/Projects/ttc-test-tabtapi
+git pull
+docker-compose up -d --build
+```
