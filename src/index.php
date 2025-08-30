@@ -126,15 +126,15 @@ function DisplayPost($index)
 		<div class="panel-heading"><font size="+2">TabTAPI Test Form</font></div>
 		<div class="panel-body">
 			<div class="col-md-6">
-				<a href="http://tabt.frenoy.net/index.php">TabT-Api Docs</a><br>
-				<a href="https://github.com/gfrenoy/TabT-API">TabT-API Source</a><br>
-				<a href="https://github.com/Laoujin/ttc-test-tabtapi">Source of this</a><br>
+				<a href="http://tabt.frenoy.net/index.php" target="_parent">TabT-Api Docs</a><br>
+				<a href="https://github.com/gfrenoy/TabT-API" target="_parent">TabT-API Source</a><br>
+				<a href="https://github.com/Laoujin/ttc-test-tabtapi" target="_parent">Source of this</a><br>
 			</div>
 			<div class="col-md-6">
 				<h4>Competition Urls</h4>
-				VTTL WSDL: <a href="<?=$params["VTTL"]?>"><?=$params["VTTL"]?></a><br>
-				Sporta WSDL: <a href="<?=$params["Sporta"]?>"><?=$params["Sporta"]?></a><br>
-				KAVVV WSDL: <a href="<?=$params["KAVVV"]?>"><?=$params["KAVVV"]?></a><br>
+				VTTL WSDL: <a href="<?=$params["VTTL"]?>" target="_parent"><?=$params["VTTL"]?></a><br>
+				Sporta WSDL: <a href="<?=$params["Sporta"]?>" target="_parent"><?=$params["Sporta"]?></a><br>
+				KAVVV WSDL: <a href="<?=$params["KAVVV"]?>" target="_parent"><?=$params["KAVVV"]?></a><br>
 			</div>
 		</div>
 	</div>
