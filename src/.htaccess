@@ -1,4 +1,4 @@
 # Allow access
-<FilesMatch "\.(php|html|htm|js|css)$">
+<FilesMatch "\.(php|html|htm|js|css|png|ico|svg)$">
   Require all granted
 </FilesMatch>

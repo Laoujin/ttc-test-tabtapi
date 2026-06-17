@@ -101,7 +101,20 @@ function DisplayPost($index)
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TabTAPI Test Form</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<meta name="description" content="Test form for the TabT table tennis web services (VTTL, Sporta, KAVVV): call endpoints and inspect the results.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TabTAPI Test Form">
+<meta property="og:description" content="Test form for the TabT table tennis web services (VTTL, Sporta, KAVVV): call endpoints and inspect the results.">
+<meta property="og:url" content="https://ttc-tabt.sangu.be/">
+<meta property="og:image" content="https://ttc-tabt.sangu.be/apple-touch-icon.png">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
