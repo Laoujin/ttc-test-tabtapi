@@ -1,7 +1,6 @@
-;<?php http_response_code(403); exit; ?>
-; The line above keeps this file out of the web: parse_ini_file() reads it as INI
-; (a ';' line is a comment), but a direct HTTP request executes the <?php and 403s
-; before any value below is echoed. It MUST stay the first line.
+;<?php exit; ?>
+; Guard above: parse_ini_file() treats a ';' line as a comment, but a direct web
+; request runs the PHP and exits before any setting below is served. Keep it first.
 ; Credentials
 Account =
 Password =
