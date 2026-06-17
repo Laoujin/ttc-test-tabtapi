@@ -11,6 +11,3 @@ KAVVV = https://tafeltennis.kavvv.be/api/?wsdl
 ClubName = Aalst
 ClubVTTL = OVL134
 ClubSporta = 4055
-
-; Loki (ex: http://loki:3100/loki/api/v1/push)
-LokiUrl =

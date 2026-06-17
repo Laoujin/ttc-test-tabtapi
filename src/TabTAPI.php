@@ -8,14 +8,13 @@ class TabTAPI
 	private $_urlSporta;
 	private $_urlKAVVV;
 	private $_wsdlUrl;
-	private $_urlLoki;
 
 	private $_lastCallSuccess;
 	private $_lastParams;
 	private $_lastFunctionName;
 	private $_lastError;
 
-	function __construct($account, $password, $urlVTTL, $urlSporta, $urlKAVVV, $urlLoki)
+	function __construct($account, $password, $urlVTTL, $urlSporta, $urlKAVVV)
 	{
 		$this->_credentials = new Credentials($account, $password);
 
@@ -23,7 +22,6 @@ class TabTAPI
 		$this->_urlSporta = $urlSporta;
 		$this->_urlSporta = $urlSporta;
 		$this->_urlKAVVV = $urlKAVVV;
-		$this->_urlLoki = $urlLoki;
 
 		$this->SetCompetition("VTTL");
 	}
@@ -181,7 +179,7 @@ class TabTAPI
 
 	private function soapCall($functionName)
 	{
-		$this->log_to_loki($functionName);
+		$this->log($functionName);
 
 		try {
 			$this->_lastCallSuccess = true;
@@ -223,17 +221,9 @@ class TabTAPI
 		return $this->_lastError;
 	}
 
-	function log_to_loki($message) {
-		if (empty($this->_urlLoki)) {
-			return;
-		}
-
-		$labels = [
-			'app' => 'ttc',
-			'level' => 'info',
-			'service_name' => 'ttc-tabt',
-		];
-
+	// One request line to stderr → container logs → Alloy → Loki/Grafana. The platform
+	// scrapes container stdout/stderr, so the app does no log shipping of its own.
+	function log($message) {
 		$sanitizedParams = unserialize(serialize($this->_lastParams));
 		if (isset($sanitizedParams['Credentials']) &&
 			is_object($sanitizedParams['Credentials']) &&
@@ -242,30 +232,7 @@ class TabTAPI
 			$sanitizedParams['Credentials']->Password = '***';
 		}
 		$logLine = "Executing endpoint: $message | Params: " . json_encode($sanitizedParams);
-		$stream = [
-			'stream' => $labels,
-			'values' => [
-				[ (string)(int)(microtime(true) * 1e9), $logLine ]
-			]
-		];
-
-		$payload = json_encode(['streams' => [$stream]]);
-
-		try {
-			$ch = curl_init($this->_urlLoki);
-			curl_setopt_array($ch, [
-				CURLOPT_CUSTOMREQUEST => 'POST',
-				CURLOPT_POSTFIELDS => $payload,
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
-				CURLOPT_CONNECTTIMEOUT => 1,
-				CURLOPT_TIMEOUT => 2,
-			]);
-			curl_exec($ch);
-			curl_close($ch);
-		} catch (Throwable $e) {
-			// Silently ignore all errors
-		}
+		file_put_contents('php://stderr', $logLine . PHP_EOL);
 	}
 }
 
