@@ -9,7 +9,7 @@ More information about the Frenoy webservices can be found at: [http://tabt.fren
 [TabT-API Source](https://github.com/gfrenoy/TabT-API)
 
 
-[Deployed version at TTC Aalst](https://ttc-aalst.be/tabt-api.html)
+[Deployed version at TTC Aalst](https://ttc-tabt.sangu.be/)
 
 
 The wsdl endpoints
